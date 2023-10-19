@@ -8,6 +8,8 @@ import {
 } from 'react-router-dom'
 import LoginForm from './components/LoginForm';
 import Dashboard from './components/Dashboard';
+import User from './components/User';
+import Inventory from './components/Inventory';
 
 function App() {
   return (
@@ -15,6 +17,9 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginForm/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/user" element={<User/>}/>
+        <Route path="/inventory" element={<Inventory/>}/>
+        <Route path="*" element={<h1>Not Found</h1>}/>
       </Routes>
       
       

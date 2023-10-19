@@ -1,4 +1,4 @@
-import {React,useState} from 'react';
+import React, { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 
@@ -34,8 +34,13 @@ export default function LoginForm(){
             });
             
             const data = await response.json();
+            const jwtToken = data.token;
+            localStorage.setItem('jwtToken', jwtToken);
+
             console.log(data);
             if (response.status === 200) {
+                
+                setErrorMessage('');
                 navigate('/dashboard');
                 console.log('Login successful');
             } else if(response.status === 400){

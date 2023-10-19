@@ -6,7 +6,8 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
 const authRoutes = require("./routes/auth.js");
-
+const productRoute = require("./routes/product.js");
+const userRoute = require("./routes/user.js");
 
 //confirugations
 dotenv.config();
@@ -20,6 +21,8 @@ app.use(cors());
 
 //routes
 app.use("/auth",authRoutes);
+app.use("/products", productRoute);
+app.use("/user", userRoute);
 
 //connecting to the database
 const PORT = process.env.PORT || 8080;
