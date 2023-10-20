@@ -1,16 +1,23 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
+import {products} from '../data/products'
 
 
+function InventoryDashboard( ) {
+  const navigate = useNavigate();
 
-function InventoryDashboard( {products}) {
+  const handleClickProduct = (productId) => {
+    navigate(`/products/${productId}`);
+  };
+
  
   const totalProductValue = products.reduce(
-    (total, product) => total + product.price * product.stock,
+    (total, product) => total + product.price * product.quantity,
     0
   );
 
   const outOfStockCategories = products.reduce((categories, product) => {
-    if (product.stock === 0 && !categories.includes(product.category)) {
+    if (product.quantity=== 0 && !categories.includes(product.category)) {
       categories.push(product.category);
     }
     return categories;
@@ -41,19 +48,24 @@ function InventoryDashboard( {products}) {
       </div>
 
       
-      <div className="bg-white p-4 rounded-lg shadow-md">
-        <h2 className="text-lg font-semibold text-gray-800">Product List</h2>
-        <ul className="divide-y divide-gray-200">
-          {products.map((product) => (
-            <li key={product.id} className="py-2">
+      <div className="p-4 space-y-4">
+     
+      <ul className="divide-y divide-gray-200">
+        {products.map((product) => (
+          <li key={product._id} className="py-2">
+            <div
+              onClick={() => handleClickProduct(product._id)}
+              className="cursor-pointer"
+            >
               <p className="font-semibold">{product.name}</p>
               <p>Category: {product.category}</p>
               <p>Price: ${product.price}</p>
-              <p>Stock: {product.stock}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+              <p>Quantity: {product.quantity}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
     </div>
   );
 }

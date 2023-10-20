@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import {AiOutlineMenu,AiOutlineClose,AiFillTag} from 'react-icons/ai';
+import {AiOutlineMenu} from 'react-icons/ai';
 import {AiOutlineSearch} from 'react-icons/ai';
-import {BsFillCartFill,BsFillSaveFill} from 'react-icons/bs';
-import { AiOutlinePlus } from 'react-icons/ai';
-import {AiOutlineMinus} from 'react-icons/ai'
+
 import SideNav from "./SideNav";
 
 export default function Navbar(){
