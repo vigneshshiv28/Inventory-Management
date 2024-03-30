@@ -1,11 +1,11 @@
 const express = require("express");
-const router = express.Router();
-import { verifyToken } from "../middleware/auth.js";
-import { createProduct, getProducts, updateProduct, deleteProduct } from "../controllers/product.js";
 
-router.post("/", verifyToken, createProduct);
-router.get("/", verifyToken, getProducts);
-router.put("/:id", verifyToken, updateProduct);
-router.delete("/:id", verifyToken, deleteProduct);
+const router = express.Router();
+const  { createProduct, getProducts, updateProduct, deleteProduct } = require("../controllers/product.js");
+
+router.post("/", createProduct);
+router.get("/", getProducts);
+router.put("/:id", updateProduct);
+router.delete("/:id", deleteProduct);
 
 module.exports = router;

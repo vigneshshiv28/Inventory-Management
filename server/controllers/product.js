@@ -1,4 +1,4 @@
-import Product from "../models/product.js";
+const Product = require ("../models/product.js");
 
 
 const createProduct = async (req, res) => {
@@ -54,7 +54,7 @@ const createProduct = async (req, res) => {
     res.status(200).json({ message: "Product deleted." });
   }
   
-  module.exports = { createProduct, getProducts, getProduct, deleteProduct };
+  
 
  
  
@@ -88,3 +88,5 @@ const updateProduct = async (req, res) => {
   
     res.status(200).json(updatedProduct);
   }
+
+  module.exports = { createProduct, getProducts,updateProduct, getProduct, deleteProduct };
